@@ -39,6 +39,8 @@ on early-init
     write /sys/kernel/mm/ksm/run 1
 
 on fs
+    wait /dev/block/platform/soc.0/7824900.sdhci/mmcblk0
+    symlink /dev/block/platform/soc.0/7824900.sdhci /dev/block/bootdevice
     mount_all fstab.qcom
     swapon_all fstab.qcom
 

@@ -24,12 +24,12 @@ NUM_FRAMEBUFFER_SURFACE_BUFFERS := 3
 TARGET_ARCH_LOWMEM := true
 TARGET_USES_IMS := false
 #add suffix variable to uniquely identify the board
-TARGET_BOARD_SUFFIX := _512
+#TARGET_BOARD_SUFFIX := _512
 
 TARGET_LDPRELOAD := libNimsWrap.so
 HAVE_SYNAPTICS_I2C_RMI4_FW_UPGRADE := true
 
-#Disable below Audio-features for 512 variant
+#Disable below Audio-features for wearable variant
 BOARD_SUPPORTS_SOUND_TRIGGER := false
 
 #Use dlmalloc instead of jemalloc for mallocs
