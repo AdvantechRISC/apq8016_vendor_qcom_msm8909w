@@ -1,5 +1,5 @@
 #
-# Copyright (C) 2011 The Android Open-Source Project
+# Copyright (C) 2015 The Android Open-Source Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -20,6 +20,8 @@ LOCAL_PATH := $(call my-dir)
 #----------------------------------------------------------------------
 ifneq ($(strip $(TARGET_NO_BOOTLOADER)),true)
 
+INSTALLED_BOOTLOADER_MODULE := $(PRODUCT_OUT)/bootloader
+
 # Compile
 include bootable/bootloader/lk/AndroidBoot.mk
 
@@ -34,10 +36,18 @@ endif
 # Compile Linux Kernel
 #----------------------------------------------------------------------
 ifeq ($(KERNEL_DEFCONFIG),)
-    KERNEL_DEFCONFIG := msm8909_defconfig
+    ifeq ($(TARGET_BUILD_VARIANT),user)
+      KERNEL_DEFCONFIG := msm8909w-perf_defconfig
+    else
+      KERNEL_DEFCONFIG := msm8909w_defconfig
+    endif
 endif
 
 include kernel/AndroidKernel.mk
+
+ifeq ($(INSTALLED_KERNEL_TARGET),)
+    INSTALLED_KERNEL_TARGET := out/target/product/msm8909w/kernel
+endif
 
 $(INSTALLED_KERNEL_TARGET): $(TARGET_PREBUILT_KERNEL) | $(ACP)
 	$(transform-prebuilt-to-target)
