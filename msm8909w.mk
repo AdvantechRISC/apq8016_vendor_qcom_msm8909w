@@ -26,6 +26,12 @@ PRODUCT_PACKAGES += \
     run-as \
     setup_fs
 
+PRODUCT_PACKAGES += \
+    ethernet-service
+
+PRODUCT_SYSTEM_SERVER_JARS += \
+    ethernet-service
+
 PRODUCT_PACKAGES += ClockworkExampleWatchFace
 
 PRODUCT_CHARACTERISTICS := nosdcard,watch
