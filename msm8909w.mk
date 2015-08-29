@@ -14,6 +14,9 @@ PRODUCT_NAME := msm8909w
 PRODUCT_DEVICE := msm8909w
 PRODUCT_BRAND := ANDROID
 
+# Supported languages for Android Wear
+PRODUCT_LOCALES := en_US en_GB en_XA de_DE es_ES es_US fr_FR fr_CA it_IT ja_JP ko_KR pt_BR ru_RU
+
 # System tools
 PRODUCT_PACKAGES += \
     applypatch \
